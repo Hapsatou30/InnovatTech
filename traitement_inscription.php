@@ -14,9 +14,11 @@ $motdepasse = $_POST['motdepasse'];
 $requete = "INSERT INTO Utilisateur (Nom, Prenom, Email, Telephone, date_inscription, Mot_de_passe) VALUES ('$nom', '$prenom', '$email', '$telephone', '$date_inscription', '$motdepasse')";
 
 if ($connexion->query($requete) === TRUE) {
+    header('Location: connexion.php');
    
 } else {
     echo "Erreur lors de l'inscription : " . $connexion->error;
+    header('Location: inscription.php');
 }
 
 // Fermer la connexion

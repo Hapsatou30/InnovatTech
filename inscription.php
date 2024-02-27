@@ -9,27 +9,21 @@
 
 </head>
 <body>
-    <?php
-        require_once "header.php";
-    ?>
+
+    <div class="formulaire">
     <h1>Inscription</h1>
     <form action="traitement_inscription.php" method="post">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required><br>
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" required><br>
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required><br>
-        <label for="telephone">Téléphone :</label>
-        <input type="tel" id="telephone" name="telephone"><br>
-        <label for="date_inscription">Date_inscription :</label>
-        <input type="text" id="date_inscription" name="date_inscription"><br>
-        <label for="motdepasse">Mot de passe :</label>
-        <input type="password" id="motdepasse" name="motdepasse" required><br>
+        <input type="text" id="nom" name="nom" placeholder="Nom" required><br>
+        <input type="text" id="prenom" name="prenom" placeholder="Prenom" required><br>
+        <input type="email" id="email" name="email" placeholder="Email" required><br>
+        <input type="tel" id="telephone" name="telephone" placeholder="Telephone"><br>
+        <input type="text" id="date_inscription" name="date_inscription" placeholder="Date"> <br>
+        <input type="password" id="motdepasse" name="motdepasse" placeholder="Mot de passe" required><br>
         <input type="submit" value="S'inscrire">
+        <div class="connect">
+            <p>Vous avez déjà un compte ? <a href="connexion.php">Connexion</a></p>
+        </div>
     </form>
-    <?php
-    require_once "footer.php";
-    ?>
+    </div>
 </body>
 </html>

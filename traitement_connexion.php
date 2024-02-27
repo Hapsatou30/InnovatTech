@@ -18,7 +18,7 @@ if ($resultat->num_rows > 0) {
     header('Location: index.php'); // Redirigez l'utilisateur vers la page d'accueil après la connexion
     exit;
 } else {
-    // Utilisateur non trouvé, affichez un message d'erreur
+    
     header('Location: connexion.php');
 }
 

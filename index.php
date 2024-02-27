@@ -13,13 +13,6 @@
     require_once "header.php";
     ?>
     <main>
-        <section class="login-registration">
-            <h2>Connexion ou inscription</h2>
-            <div class="links">
-                <a href="connexion.php"><button>Se connecter</button></a>
-                <a href="inscription.php"><button>S'inscrire</button></a>
-            </div>
-        </section>
         <section class="categories">
             <h2>Les Catégories</h2>
             <div class="row row-cols-1 row-cols-md-2 g-4">

@@ -9,19 +9,25 @@
 
 </head>
 <body>
-    <?php
-        require_once "header.php";
-    ?>
-    <h1>Connexion</h1>
+   <div class="container">
+   <div class="logo">
+        <img src="./images/building.webp" alt="logo">
+    </div>
+    
+   <div class="formulaire">
+   <h1>Connexion</h1>
     <form action="traitement_connexion.php" method="post">
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required><br>
-        <label for="motdepasse">Mot de passe :</label>
-        <input type="password" id="motdepasse" name="motdepasse" required><br>
-        <input type="submit" value="Se connecter">
+        <input type="email" id="email" name="email" placeholder="Email" required><br>
+        <input type="password" id="motdepasse" name="motdepasse" placeholder="Mot de passe" required><br>
+        <input type="submit" value="CONNECTER">
+        <p>OU</p>
+        <div class="button">
+          <a href="inscription.php" class="button-inscription">Créer un compte</a>
+
+        </div>
     </form>
-    <?php
-    require_once "footer.php";
-    ?>
+   </div>
+   </div>
+    
 </body>
 </html>

@@ -19,7 +19,7 @@ if ($resultat->num_rows > 0) {
     exit;
 } else {
     // Utilisateur non trouvé, affichez un message d'erreur
-    echo "Email ou mot de passe incorrect.";
+    header('Location: connexion.php');
 }
 
 // Fermer la connexion

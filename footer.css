@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*footer*/
+footer{
+    background: #1F1F1F;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    justify-content: space-between;
+    padding: 30px 5px;
+    }
+    .footer_principal {
+    display: flex;
+    justify-content: space-between; /* Pour espacer les éléments sur toute la largeur */
+    flex-wrap: wrap; /* Pour permettre le retour à la ligne si nécessaire */
+    }
+    /* Styles pour chaque section */
+    .slogan,
+    .nav-bar_footer,
+    .contact_footer,
+    .social_media {
+    flex: 1; /* Chaque section prend autant d'espace disponible */
+    display: flex;
+    align-items: center; /* Alignement vertical */
+    }
+    .slogan{
+    display: flex;
+    flex-direction: column;
+    max-width: 25%;
+    }
+    footer .logo img{
+    width:200px;
+    border-radius: 20px;
+    margin-left: 40px;
+    }
+    .le_paragraphe_footer{
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FFFFFF;
+    width: 90%;
+    text-align: center;
+    margin-left: 30px;
+    }
+    .le_paragraphe_footer p{
+    margin-top: 30px; 
+    font-family: roboto;
+    font-size: 16px;
+    }
+    
+    .nav-bar_footer{
+    max-width: 25%;
+    }
+    .nav-bar_footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    gap: 30px;
+    margin-left: 100px;
+    }
+    .nav-bar_footer ul li a {
+    text-decoration: none; 
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px; 
+    font-family: roboto;
+    }
+    .nav-bar_footer ul li a:hover{
+        color: #FF007F;
+    }
+    
+    
+    
+    .Copyright{
+    font-family: iceberg;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 15px;
+    text-align: center;
+    margin-top: 60px;
+    color: #FFFFFF;
+    }
+  
+  
+    

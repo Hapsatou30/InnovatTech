@@ -9,37 +9,15 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="./images/building.webp" alt="logo"></a>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">Idée</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">Connexcion</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="banner">
-            <img src="./images/back1.avif" alt="banniere">
-            <h1> Collaborez, partagez et votez pour les meilleures idées.</h1>
-            <p>Rejoignez la communauté InnovateTech Solutions et partagez vos idées !</p>
-        </div>
-    </header>
+    <?php
+    require_once "header.php";
+    ?>
     <main>
         <section class="login-registration">
             <h2>Connexion ou inscription</h2>
             <div class="links">
-                <a href="login.php"><button>Se connecter</button></a>
-                <a href="register.php"><button>S'inscrire</button></a>
+                <a href="connexion.php"><button>Se connecter</button></a>
+                <a href="inscription.php"><button>S'inscrire</button></a>
             </div>
         </section>
         <section class="categories">
@@ -80,31 +58,9 @@
             </div>
         </section>
     </main>
-    <footer>
-        <div class="footer_principal">
-          <div class="slogan">
-            <div class="logo">
-              <img src="images/building.webp" alt="Logo">
-            </div>
-            <div class="le_paragraphe_footer">
-              <p>Collaborez, partagez et votez pour les meilleures idées.</p>
-            </div>
-          </div>
-  
-          <div class="nav-bar_footer">
-            <ul>
-              <li><a href="index.php">ACCUEIL</a></li>
-              <li><a href="">SERVICES</a></li>
-              <li><a href="">BLOG</a></li>
-              <li><a href="">CONTACT</a></li>
-            </ul>
-          </div>
-          
-        </div>
-  
-        <div class="Copyright">
-          Copyright@InnovateTech2024
-        </div>
-    </footer>
+    <?php
+    require_once "footer.php";
+    ?>
+   
 </body>
 </html>

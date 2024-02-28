@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'header.css';
+@import 'footer.css';
+body {
+    background-color: antiquewhite;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.box1 h1{
+    float: left;
+    font-family: iceberg;
+    color:  #FF007F; 
+    font-weight: 500;
+}
+.box1 button{
+    float: right;
+    background-color: #00CED1;
+    font-family: roboto;
+    color: #ffff;
+}
+.box1 button:hover{
+    background-color:#FF007F ;
+    color: #ffff;
+}
+.container{
+    margin-top: 50px;
+}
+.modal-header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FF007F;
+    font-family: iceberg;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.modal-footer input  {
+    background-color: #00CED1; /* Remplacez par la couleur de votre choix */
+    border-color: #ffff; /* Remplacez par la couleur de votre choix */
+}

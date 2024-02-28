@@ -15,11 +15,11 @@ if ($resultat->num_rows > 0) {
     // Utilisateur trouvé, connectez l'utilisateur
     session_start();
     $_SESSION['email'] = $email;
-    header('Location: index.php'); // Redirigez l'utilisateur vers la page d'accueil après la connexion
+    header('Location: accueil.php'); // Redirigez l'utilisateur vers la page d'accueil après la connexion
     exit;
 } else {
     
-    header('Location: connexion.php');
+    header('Location: index.php');
 }
 
 // Fermer la connexion

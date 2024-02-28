@@ -13,23 +13,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+                        <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Idée</a>
+                        <a class="nav-link" href="idea.php"> Proposez une nouvelle idée</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="connexion.php">Connexcion</a>
+                        <a class="nav-link" href="index.php">Deconnexion</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="banner">
-            <img src="./images/back1.avif" alt="banniere">
-            <h1> Collaborez, partagez et votez pour les meilleures idées.</h1>
-            <p>Rejoignez la communauté InnovateTech Solutions et partagez vos idées !</p>
-        </div>
     </header>
 </body>
 </html>

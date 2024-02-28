@@ -21,7 +21,7 @@
         <input type="password" id="motdepasse" name="motdepasse" placeholder="Mot de passe" required><br>
         <input type="submit" value="S'inscrire">
         <div class="connect">
-            <p>Vous avez déjà un compte ? <a href="connexion.php">Connexion</a></p>
+            <p>Vous avez déjà un compte ? <a href="index.php">Connexion</a></p>
         </div>
     </form>
     </div>

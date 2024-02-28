@@ -30,6 +30,8 @@
                         <th>Date_creation</th>
                         <th>Statut</th>
                         <th>Id_utilisateur</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,6 +55,8 @@
                             <td><?php echo $row['Date_creation']; ?></td>
                             <td><?php echo $row['Statut']; ?></td>
                             <td><?php echo $row['Id_utilisateur']; ?></td>
+                            <td><a href="update.php?Id= <?php echo $row['Id']; ?>" class="btn btn-success">Update</a></td>
+                            <td><a href="delete.php?Id= <?php echo $row['Id']; ?>" class="btn btn-danger">Delete</a></td>
                             
                        </tr>
                        <?php

@@ -19,10 +19,9 @@
   
           <div class="nav-bar_footer">
             <ul>
-              <li><a href="index.php">ACCUEIL</a></li>
-              <li><a href="">SERVICES</a></li>
-              <li><a href="">BLOG</a></li>
-              <li><a href="">CONTACT</a></li>
+              <li><a href="accueil.php">ACCUEIL</a></li>
+              <li><a href="idea.php">Idée</a></li>
+              <li><a href="index.php">Deconnexion</a></li>
             </ul>
           </div>
           

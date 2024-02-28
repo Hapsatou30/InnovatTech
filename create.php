@@ -7,13 +7,14 @@
         $Date_creation = $_POST['Date_creation'];
         $Statut= $_POST['Statut'];
         $Id_utilisateur = $_POST['Id_utilisateur'];
+        $Id_categorie = $_POST['Id_categorie'];
 
         if($Titre == "" || empty($Titre)){
         header('Location:idea.php');
         }
         else{
-            $query = "INSERT INTO `Idee`( `Titre`, `Description`, `Date_creation`, `Statut`, `Id_utilisateur`)
-             values ('$Titre','$Description', '$Date_creation','$Statut','$Id_utilisateur')";
+            $query = "INSERT INTO `Idee`( `Titre`, `Description`, `Date_creation`, `Statut`, `Id_utilisateur`, `Id_categorie`)
+             values ('$Titre','$Description', '$Date_creation','$Statut','$Id_utilisateur', '$Id_categorie')";
 
              $result = mysqli_query($connexion,$query);
              if(!$result){

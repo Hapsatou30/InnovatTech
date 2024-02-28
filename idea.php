@@ -30,8 +30,9 @@
                         <th>Date_creation</th>
                         <th>Statut</th>
                         <th>Id_utilisateur</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <th>Id_categorie</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,8 +56,9 @@
                             <td><?php echo $row['Date_creation']; ?></td>
                             <td><?php echo $row['Statut']; ?></td>
                             <td><?php echo $row['Id_utilisateur']; ?></td>
-                            <td><a href="update.php?Id= <?php echo $row['Id']; ?>" class="btn btn-success">Modifier</a></td>
-                            <td><a href="delete.php?Id= <?php echo $row['Id']; ?>" class="btn btn-danger">Supprimer</a></td>
+                            <td><?php echo $row['Id_categorie']; ?></td>
+                            <td><a href="update.php?Id= <?php echo $row['Id']; ?>" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 15 15"><path fill="#00CED1" fill-rule="evenodd" d="M1.903 7.297c0 3.044 2.207 5.118 4.686 5.547a.521.521 0 1 1-.178 1.027C3.5 13.367.861 10.913.861 7.297c0-1.537.699-2.745 1.515-3.663c.585-.658 1.254-1.193 1.792-1.602H2.532a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V2.686l-.001.002c-.572.43-1.27.957-1.875 1.638c-.715.804-1.253 1.776-1.253 2.97m11.108.406c0-3.012-2.16-5.073-4.607-5.533a.521.521 0 1 1 .192-1.024c2.874.54 5.457 2.98 5.457 6.557c0 1.537-.699 2.744-1.515 3.663c-.585.658-1.254 1.193-1.792 1.602h1.636a.5.5 0 1 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 1 1 1 0v1.845h.002c.571-.432 1.27-.958 1.874-1.64c.715-.803 1.253-1.775 1.253-2.97" clip-rule="evenodd"/></svg></a></td>
+                            <td><a href="delete.php?Id= <?php echo $row['Id']; ?>" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24"><path fill="#FF007F" d="M6 21h12V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"/></svg></a></td>
                             
                        </tr>
                        <?php
@@ -102,6 +104,10 @@
                         <div class="form-group">
                             <label for="">Id_utilisateur</label>
                             <input type="text" name="Id_utilisateur" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Id_categorie</label>
+                            <input type="text" name="Id_categorie" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -9,6 +9,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
 </head>
+<style>
+    .btn-primary {
+    background-color: #00CED1;
+    border-color: #FFFF;
+    margin-top: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #FF007F;
+    border-color: #FFFF;
+}
+</style>
 <body>
 <?php 
     require_once "header.php";
@@ -17,25 +29,25 @@
 
 ?>
 <?php
-if(isset($_GET['Id'])){
+ if(isset($_GET['Id'])){
     $Id = $_GET['Id'];
-                $query = "SELECT * FROM Idee WHERE Id = '$Id'";
-
-
-                $result =mysqli_query($connexion, $query);
-
-                if(!$result){
-                    die("La connexion a échoué : " . $connexion->connect_error);
-                }
-                else{
-                    $row = mysqli_fetch_assoc($result);
-
-                } 
-            }              
+    $query = "SELECT * FROM Idee WHERE Id = ?";
+    $stmt = $connexion->prepare($query);
+    $stmt->bind_param("i", $Id); // "i" pour integer
+    if(!$stmt->execute()){
+        die("La connexion a échoué : " . $connexion->connect_error);
+    }
+    $result = $stmt->get_result();
+    if($result->num_rows === 1){
+        $row = $result->fetch_assoc();
+    } else {
+        die("Aucune idée trouvée avec cet identifiant.");
+    }
+}                    
 ?>
 
 <?php
-  if(isset($_POST['modifier'])){
+ if(isset($_POST['modifier'])){
     // Vérifiez si l'ID a été transmis via GET
     if(isset($_GET['Id'])){
         $Id = $_GET['Id'];
@@ -46,11 +58,12 @@ if(isset($_GET['Id'])){
     $Date_creation = $_POST['Date_creation'];
     $Statut = $_POST['Statut'];
     $Id_utilisateur = $_POST['Id_utilisateur'];
+    $Id_categorie = $_POST['Id_categorie'];
 
     // Utilisez une requête préparée pour éviter les injections SQL
-    $query = "UPDATE Idee SET Titre = ?, Description = ?, Date_creation = ?, Statut = ?, Id_utilisateur = ? WHERE Id = ?";
+    $query = "UPDATE Idee SET Titre = ?, Description = ?, Date_creation = ?, Statut = ?, Id_utilisateur = ?, Id_categorie = ? WHERE Id = ?";
     $stmt = $connexion->prepare($query);
-    $stmt->bind_param("ssssii", $Titre, $Description, $Date_creation, $Statut, $Id_utilisateur, $Id);
+    $stmt->bind_param("ssssiii", $Titre, $Description, $Date_creation, $Statut, $Id_utilisateur, $Id_categorie, $Id);
     // Exécutez la requête
     if($stmt->execute()){
         // Redirigez l'utilisateur vers la page idea.php après la modification réussie
@@ -60,7 +73,6 @@ if(isset($_GET['Id'])){
         die("La modification a échoué : " . $stmt->error);
     }
 }
-
 ?>
 <div class="container">
 <form action="update.php?Id= <?php  echo $Id; ?>" method="post">
@@ -84,6 +96,11 @@ if(isset($_GET['Id'])){
         <label for="">Id_utilisateur</label>
         <input type="text" name="Id_utilisateur" class="form-control" value="<?php echo $row['Id_utilisateur'] ?>">
     </div>
+    <div class="form-group">
+        <label for="">Id_categorie</label>
+        <input type="text" name="Id_categorie" class="form-control" value="<?php echo $row['Id_categorie'] ?>">
+    </div>
+    
     <input type="submit" class="btn btn-primary " name="modifier" value="Modifier">
     </form>
 </div>

@@ -13,7 +13,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="accueil.php">Accueil</a>
+                        <a class="nav-link"  href="accueil.php">Accueil</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="idea.php"> Proposez une nouvelle idée</a>

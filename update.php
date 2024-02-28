@@ -19,10 +19,6 @@
 <?php
 if(isset($_GET['Id'])){
     $Id = $_GET['Id'];
-
-              
-
-               
                 $query = "SELECT * FROM Idee WHERE Id = '$Id'";
 
 

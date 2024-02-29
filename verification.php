@@ -6,3 +6,4 @@
     }
     $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
     $nom = isset($_SESSION['nom']) ? $_SESSION['nom'] : '';
+    $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';

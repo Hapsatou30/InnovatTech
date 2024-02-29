@@ -25,6 +25,7 @@ if ($resultat->num_rows > 0) {
 
     // Récupérer les informations de l'utilisateur
     $utilisateur = $resultat->fetch_assoc();
+    $_SESSION['Id'] = $utilisateur['Id']; 
     $_SESSION['prenom'] = $utilisateur['Prenom'];
     $_SESSION['nom'] = $utilisateur['Nom']; 
     $_SESSION['logged'] = true;

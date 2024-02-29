@@ -1,3 +1,6 @@
+<?php
+require_once('verification.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +43,7 @@
                     /* Inclure le fichier config */
                 require_once "config.php";
 
-                $query = "select * from Idee";
+                $query = "SELECT * FROM Idee";
 
                 $result =mysqli_query($connexion, $query);
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,9 @@
                     </ul>
                 </div>
             </div>
+            <p class="Prenom_nom" style="  margin-top:4%; font-size: 20px; color: black; font-weight: bold; font-family: roboto; text-decoration: none; margin-right: 10px;" > <?php echo $prenom ?> <?php echo $nom ?>
+            <svg style="margin-left:40%;" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 256 256"><path fill="#FF007F" d="M240 94c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 220.66 16 164 16 94a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 40.88 157.35 32 178 32a62.07 62.07 0 0 1 62 62"/></svg>
+            </p>         
         </nav>
     </header>
 </body>

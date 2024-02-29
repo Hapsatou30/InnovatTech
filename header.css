@@ -3,7 +3,7 @@
 /* Navigation bar */
 
 .navbar {
-    
+   
     background-color: #00CED1; 
     font-family: iceberg;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -38,4 +38,6 @@
 .navbar-nav .nav-link {
     color: #ffff; 
 }
+
+
 

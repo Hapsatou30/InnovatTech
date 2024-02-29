@@ -37,21 +37,39 @@ if(isset($_GET['Id'])){
 }
 
 // Vérifier si l'utilisateur actuel est le propriétaire de l'idée
+// Requête SQL pour vérifier le propriétaire de l'idée
 $query_check_owner = "SELECT Id_utilisateur FROM Idee WHERE Id = ?";
+
+// Préparation de la requête avec la connexion à la base de données
 $stmt_check_owner = $connexion->prepare($query_check_owner);
+
+// Liaison de l'identifiant de l'idée en tant que paramètre à la requête préparée
 $stmt_check_owner->bind_param("i", $Id);
+
+// Exécution de la requête préparée
 if(!$stmt_check_owner->execute()){
+    // Gestion de l'erreur si l'exécution échoue
     die("La connexion a échoué : " . $connexion->connect_error);
 }
+
+// Récupération du résultat de la requête
 $result_check_owner = $stmt_check_owner->get_result();
+
+// Vérification du résultat de la requête
 if($result_check_owner->num_rows === 1){
+    // Si une seule ligne est renvoyée en résultat (une idée correspondante est trouvée)
     $row_check_owner = $result_check_owner->fetch_assoc();
+    
+    // Vérification si l'utilisateur actuel est le propriétaire de l'idée
     if($row_check_owner['Id_utilisateur'] != $_SESSION['Id']){
+        // Si l'utilisateur actuel n'est pas le propriétaire de l'idée, afficher un message d'erreur
         die("Vous n'êtes pas autorisé à modifier cette idée.");
     }
 } else {
+    // Si aucune idée correspondante n'est trouvée, afficher un message d'erreur
     die("Aucune idée trouvée avec cet identifiant.");
 }
+
 
 $query = "SELECT Idee.*, Categorie.Nom AS Nom_categorie, Utilisateur.Prenom AS Proprietaire 
           FROM Idee 

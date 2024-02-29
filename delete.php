@@ -4,10 +4,6 @@
           require_once "config.php";
         
         require_once('verification.php');
-?>
-<?php
-
-
 // Vérification si un identifiant d'idée est passé dans l'URL
 if(isset($_GET['Id'])){
     // Récupération de l'identifiant de l'idée depuis l'URL
@@ -34,8 +30,19 @@ if(isset($_GET['Id'])){
         // Si aucune idée n'est trouvée avec l'identifiant spécifié, afficher un message d'erreur et arrêter le script
         die("Aucune idée trouvée avec cet identifiant.");
     }
+}
 
-    // Si l'utilisateur est le propriétaire de l'idée, exécuter la requête de suppression
+// Si l'utilisateur est le propriétaire de l'idée, afficher la boîte de dialogue de confirmation
+?>
+<script src="delete.js"></script>
+<?php
+
+// Si l'utilisateur a confirmé la suppression
+if(isset($_GET['Id']) && isset($_GET['confirm']) && $_GET['confirm'] === 'true') {
+    // Récupération de l'identifiant de l'idée depuis l'URL
+    $Id = $_GET['Id'];
+
+    // Requête SQL de suppression de l'idée
     $query_delete = "DELETE FROM Idee WHERE Id = ?";
     $stmt_delete = $connexion->prepare($query_delete);
     $stmt_delete->bind_param("i", $Id);
@@ -44,5 +51,10 @@ if(isset($_GET['Id'])){
     }
     // Redirection vers la page idea.php après la suppression réussie
     header('Location: idea.php');
+    exit();
 }
 ?>
+<!-- Formulaire pour confirmer la suppression -->
+<form action="delete.php?Id=<?php echo $Id; ?>&confirm=true" method="post" onsubmit="return confirmDelete();">
+    <input type="submit" value="Supprimer">
+</form>

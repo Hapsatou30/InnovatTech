@@ -20,7 +20,7 @@
                         <a class="nav-link" href="idea.php"> Proposez une nouvelle idée</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="index.php">Deconnexion</a>
+                        <a class="nav-link" href="logout.php">Deconnexion</a>
                         </li>
                     </ul>
                 </div>

@@ -1,4 +1,6 @@
-
+<?php
+require_once('verification.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,49 +26,77 @@
 <body>
 <?php 
     require_once "header.php";
-          /* Inclure le fichier config */
-          require_once "config.php";
-
+    /* Inclure le fichier config */
+    require_once "config.php";
 ?>
 <?php
- if(isset($_GET['Id'])){
+if(isset($_GET['Id'])){
     $Id = $_GET['Id'];
-    $query = "SELECT * FROM Idee WHERE Id = ?";
-    $stmt = $connexion->prepare($query);
-    $stmt->bind_param("i", $Id); // "i" pour integer
-    if(!$stmt->execute()){
-        die("La connexion a échoué : " . $connexion->connect_error);
+} else {
+    die("Aucun identifiant d'idée fourni.");
+}
+
+// Vérifier si l'utilisateur actuel est le propriétaire de l'idée
+$query_check_owner = "SELECT Id_utilisateur FROM Idee WHERE Id = ?";
+$stmt_check_owner = $connexion->prepare($query_check_owner);
+$stmt_check_owner->bind_param("i", $Id);
+if(!$stmt_check_owner->execute()){
+    die("La connexion a échoué : " . $connexion->connect_error);
+}
+$result_check_owner = $stmt_check_owner->get_result();
+if($result_check_owner->num_rows === 1){
+    $row_check_owner = $result_check_owner->fetch_assoc();
+    if($row_check_owner['Id_utilisateur'] != $_SESSION['Id']){
+        die("Vous n'êtes pas autorisé à modifier cette idée.");
     }
-    $result = $stmt->get_result();
-    if($result->num_rows === 1){
-        $row = $result->fetch_assoc();
-    } else {
-        die("Aucune idée trouvée avec cet identifiant.");
-    }
-}                    
+} else {
+    die("Aucune idée trouvée avec cet identifiant.");
+}
+
+$query = "SELECT Idee.*, Categorie.Nom AS Nom_categorie, Utilisateur.Prenom AS Proprietaire 
+          FROM Idee 
+          INNER JOIN Categorie ON Idee.Id_categorie = Categorie.Id 
+          INNER JOIN Utilisateur ON Idee.Id_utilisateur = Utilisateur.Id 
+          WHERE Idee.Id = ?";
+$stmt = $connexion->prepare($query);
+$stmt->bind_param("i", $Id); // "i" pour integer
+if(!$stmt->execute()){
+    die("La connexion a échoué : " . $connexion->connect_error);
+}
+$result = $stmt->get_result();
+if($result->num_rows === 1){
+    $row = $result->fetch_assoc();
+} else {
+    die("Aucune idée trouvée avec cet identifiant.");
+}
 ?>
 
 <?php
- if(isset($_POST['modifier'])){
-    // Vérifiez si l'ID a été transmis via GET
+if(isset($_POST['modifier'])){
+    // Récupérer l'identifiant de l'idée depuis l'URL
     if(isset($_GET['Id'])){
         $Id = $_GET['Id'];
+    } else {
+        die("Aucun identifiant d'idée fourni.");
     }
-    // Récupérez les valeurs des champs du formulaire
+
+    // Récupérer les valeurs des champs du formulaire
     $Titre = $_POST['Titre'];
     $Description = $_POST['Description'];
-    $Date_creation = $_POST['Date_creation'];
-    $Statut = $_POST['Statut'];
-    $Id_utilisateur = $_POST['Id_utilisateur'];
     $Id_categorie = $_POST['Id_categorie'];
-
-    // Utilisez une requête préparée pour éviter les injections SQL
-    $query = "UPDATE Idee SET Titre = ?, Description = ?, Date_creation = ?, Statut = ?, Id_utilisateur = ?, Id_categorie = ? WHERE Id = ?";
+    
+    // Récupérer l'identifiant de l'utilisateur à partir de la session
+    $Id_utilisateur = isset($_SESSION['Id']) ? $_SESSION['Id'] : '';
+    
+    // Utiliser une requête préparée pour éviter les injections SQL
+    $query = "UPDATE Idee 
+              SET Titre = ?, Description = ?, Id_categorie = ? 
+              WHERE Id = ? AND Id_utilisateur = ?";
     $stmt = $connexion->prepare($query);
-    $stmt->bind_param("ssssiii", $Titre, $Description, $Date_creation, $Statut, $Id_utilisateur, $Id_categorie, $Id);
-    // Exécutez la requête
+    $stmt->bind_param("sssii", $Titre, $Description, $Id_categorie, $Id, $Id_utilisateur);
+    // Exécuter la requête
     if($stmt->execute()){
-        // Redirigez l'utilisateur vers la page idea.php après la modification réussie
+        // Rediriger l'utilisateur vers la page idea.php après la modification réussie
         header('Location: idea.php?success=modification-réussie');
         exit(); // Assurez-vous de terminer le script après la redirection
     } else {
@@ -75,33 +105,37 @@
 }
 ?>
 <div class="container">
-<form action="update.php?Id= <?php  echo $Id; ?>" method="post">
-    <div class="form-group">
-        <label for=""> Titre</label>
-        <input type="text" name="Titre" class="form-control" value="<?php echo $row['Titre'] ?>">
-    </div>
-    <div class="form-group">
-        <label for=""> Description</label>
-        <input type="text" name="Description" class="form-control" value="<?php echo $row['Description'] ?>">
-    </div>
-    <div class="form-group">
-        <label for=""> Date_creation</label>
-        <input type="text" name="Date_creation" class="form-control" value="<?php echo $row['Date_creation'] ?>">
-    </div>
-    <div class="form-group">
-        <label for=""> Statut</label>
-        <input type="text" name="Statut" class="form-control" value="<?php echo $row['Statut'] ?>">
-    </div>
-    <div class="form-group">
-        <label for="">Id_utilisateur</label>
-        <input type="text" name="Id_utilisateur" class="form-control" value="<?php echo $row['Id_utilisateur'] ?>">
-    </div>
-    <div class="form-group">
-        <label for="">Id_categorie</label>
-        <input type="text" name="Id_categorie" class="form-control" value="<?php echo $row['Id_categorie'] ?>">
-    </div>
-    
-    <input type="submit" class="btn btn-primary " name="modifier" value="Modifier">
+    <form action="update.php?Id=<?php echo $Id; ?>" method="post">
+        <div class="form-group">
+            <label for=""> Propriétaire de l'idée</label>
+            <input type="text" value="<?php echo $_SESSION['prenom']; ?>" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+            <label for=""> Titre</label>
+            <input type="text" name="Titre" class="form-control" value="<?php echo $row['Titre']; ?>">
+        </div>
+        <div class="form-group">
+            <label for=""> Description</label>
+            <input type="text" name="Description" class="form-control" value="<?php echo $row['Description']; ?>">
+        </div>
+        <div class="form-group">
+            <label for=""> Date_creation</label>
+            <input type="text" class="form-control" value="<?php echo $row['Date_creation']; ?>" readonly>
+        </div>
+        <div class="form-group">
+            <label for="">Catégorie</label>
+            <select name="Id_categorie" class="form-control">
+                <?php
+                    $query_categories = "SELECT * FROM Categorie";
+                    $result_categories = mysqli_query($connexion, $query_categories);
+                    while ($row_categories = mysqli_fetch_assoc($result_categories)) {
+                        $selected = ($row_categories['Id'] == $row['Id_categorie']) ? 'selected' : '';
+                        echo "<option value='{$row_categories['Id']}' $selected>{$row_categories['Nom']}</option>";
+                    }
+                ?>
+            </select>
+        </div>
+        <input type="submit" class="btn btn-primary" name="modifier" value="Modifier">
     </form>
 </div>
     

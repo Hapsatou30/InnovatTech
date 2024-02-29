@@ -1,42 +1,53 @@
-#Application CRUD PHP/MySQL
-Cette application est un exemple simple de CRUD (Create, Read, Update, Delete) en PHP avec une base de données MySQL. Elle permet de gérer une liste d'utilisateurs avec les fonctionnalités suivantes :
+# Application CRUD PHP/MySQL 
+Cette application est un exemple de CRUD (Create, Read, Update, Delete) en PHP avec une base de données MySQL.
+C'est une boite à idée collaborative qui permet de gérer une liste d'utilisateurs et leur donne la possibilite de:
+-Ajouter des idées
+-Voir la liste de tous les idées qui sont dans l'application et aussi d'afficher les idées par catégorie
+-Modifier leur propre idée 
+-Supprimer leur propre idée
 
-Ajout d'un utilisateur
-Affichage de la liste des utilisateurs
-Modification des informations d'un utilisateur
-Suppression d'un utilisateur
-Configuration requise
+
+## Technologies Utilisées
+-Vscode version 1.86.2
+-PHP version 8.0.30
+-MySQL version 8.0.30
+-XAMPP for Linux  version 8.0.30
+ -Apache/2.4.58 (Unix) 
+
+### Configuration requise
 Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre système :
+ XAMPP for Linux  version 8.0.30 qui vous permettra d'avoir MySQL, Apache et PHP
+ 
 
-Serveur web (comme Apache)
-PHP (version 7 ou supérieure)
-MySQL (version 5.6 ou supérieure)
-Installation
+#### Installation
 Clonez ce dépôt dans le répertoire de votre serveur web :
 bash
 Copy code
-git clone https://github.com/votre-utilisateur/application-crud-php-mysql.git
-Importez la base de données crud.sql fournie dans votre serveur MySQL.
+git clone https://github.com/Hapsatou30/InnovatTech
+Importez la base de données Innovate.sql fournie dans votre serveur MySQL.
 
 Configurez les informations de connexion à la base de données dans le fichier config.php :
 
 php
 Copy code
+
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'votre_nom_utilisateur');
 define('DB_PASSWORD', 'votre_mot_de_passe');
 define('DB_NAME', 'votre_base_de_donnees');
 Lancez votre serveur web et accédez à l'application via votre navigateur.
-Utilisation
+
+##### Utilisation
 Accédez à l'application via votre navigateur.
-Sur la page principale, vous verrez la liste des utilisateurs.
-Pour ajouter un nouvel utilisateur, cliquez sur le bouton "Ajouter un utilisateur" et remplissez le formulaire.
-Pour modifier les informations d'un utilisateur existant, cliquez sur le bouton "Modifier" à côté de l'utilisateur correspondant dans la liste.
-Pour supprimer un utilisateur, cliquez sur le bouton "Supprimer" à côté de l'utilisateur correspondant dans la liste.
+Sur la page connexion on vous demande de mettre vos identifiants si vous avez un compte sinon on vous demande de vous inscrire
+Après l'inscription vous êtes rediriger vers la page connexion pour mettre tes nouveaux identifiants
+Si vous avez mis les bonnes données, vous serez amené à la page accueil
+Sur la page accueil vous avec la possibilité de voir les idées  qui existe déja regrouper par categorie. ces idées sont inserées par les autres utilisateurs
+Vous pouvez allez sur la 'Proposez une nouvelle idée' en passant par la page d'accueil
+Sur la page Idée vous avez la possibilite de voir la liste de toutes les idées; 
+Sur cette même page vous pouvez ajouter des idées, modifier et supprimer vos propres idées
+Sur la page d'accueil et idée se trouve un lien 'deconnexion' qi vous y cliquez vous mettez fin à votre session
+
 Auteur
-[Auteur du projet]
+[Hapsatou Thiam]
 
-Licence
-Ce projet est sous licence [Licence]. Voir le fichier LICENSE pour plus de détails.
-
-Vous pouvez personnaliser ce README en fonction des spécificités de votre application CRUD et de vos préférences. Assurez-vous d'inclure des instructions claires sur la configuration, l'installation, l'utilisation et toute autre information pertinente pour les utilisateurs de votre application.
